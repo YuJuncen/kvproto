@@ -170,6 +170,7 @@ message BackupRequest {
     CompressionType compression_type = 12;
     // sst compression level, some algorithms support negative compression levels
     int32 compression_level = 13;
+    bool skip_checksum = 14;
 }
 
 message StorageBackend {
@@ -248,6 +249,25 @@ message BackupResponse {
 
 service Backup {
     rpc backup(BackupRequest) returns (stream BackupResponse) {}
+    rpc DebugScanRegion(ScanRegionRequest) returns (ScanRegionResponse) {}
+    rpc DebugStopScanRegion(StopScanRegionRequest) returns (StopScanRegionResponse) {}
+}
+
+message ScanRegionRequest {
+    bytes by_key = 1;
+    int32 concurrency = 2;
+}
+
+message ScanRegionResponse {
+
+}
+
+message StopScanRegionRequest {
+
+}
+
+message StopScanRegionResponse {
+
 }
 
 // ExternalStorage is a service for using a cloud backend from StorageBackend to store files.
