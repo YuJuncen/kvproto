@@ -144,6 +144,11 @@ enum CompressionType {
     ZSTD = 3;
 }
 
+enum BackupFormat {
+    ROCKS_SST = 0;
+    KVSTREAM = 1;
+}
+
 message BackupRequest {
     uint64 cluster_id = 1;
 
@@ -171,6 +176,7 @@ message BackupRequest {
     // sst compression level, some algorithms support negative compression levels
     int32 compression_level = 13;
     bool skip_checksum = 14;
+    BackupFormat format = 15;
 }
 
 message StorageBackend {
