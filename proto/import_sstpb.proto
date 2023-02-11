@@ -61,6 +61,17 @@ service ImportSST {
 
     // ClearFiles clear applied file after restore succeed.
     rpc ClearFiles(ClearRequest) returns (ClearResponse) {}
+    
+    // ApplyDoneHint hints the file has been fully restored by applying and will no more be used.
+    rpc ApplyDoneHint(ApplyDoneHintRequest) returns (ApplyDoneHintResponse) {}
+}
+
+message ApplyDoneHintRequest {
+    SSTMeta meta = 1;
+}
+
+message ApplyDoneHintResponse {
+    bool cache_removed = 1;
 }
 
 enum SwitchMode {
