@@ -10990,6 +10990,21 @@
                 "id": 2,
                 "name": "config_path",
                 "type": "string"
+              },
+              {
+                "id": 3,
+                "name": "with_prefix",
+                "type": "bool"
+              },
+              {
+                "id": 4,
+                "name": "with_range",
+                "type": "bool"
+              },
+              {
+                "id": 5,
+                "name": "with_rev",
+                "type": "int64"
               }
             ]
           },

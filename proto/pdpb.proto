@@ -125,6 +125,10 @@ message StoreGlobalConfigResponse {
 message LoadGlobalConfigRequest {
     repeated string names = 1;
     string config_path = 2;
+
+    bool with_prefix = 3;
+    bool with_range = 4;
+    int64 with_rev = 5;
 }
 
 message LoadGlobalConfigResponse {
