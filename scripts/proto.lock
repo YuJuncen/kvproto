@@ -15635,6 +15635,10 @@
               {
                 "name": "UpdateGcPeer",
                 "integer": 15
+              },
+              {
+                "name": "SusbcribeAppliedToLast",
+                "integer": 16
               }
             ]
           },
@@ -16358,6 +16362,19 @@
             ]
           },
           {
+            "name": "SusbcribeAppliedToLastReqeust"
+          },
+          {
+            "name": "SusbcribeAppliedToLastResponse",
+            "fields": [
+              {
+                "id": 1,
+                "name": "last_index",
+                "type": "uint64"
+              }
+            ]
+          },
+          {
             "name": "AdminRequest",
             "fields": [
               {
@@ -16974,6 +16991,10 @@
               {
                 "name": "MsgRefreshBuckets",
                 "integer": 14
+              },
+              {
+                "name": "MsgAppliedToLast",
+                "integer": 15
               }
             ]
           }

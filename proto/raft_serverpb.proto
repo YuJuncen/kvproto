@@ -252,6 +252,7 @@ enum ExtraMessageType {
     MsgGcPeerResponse = 12;
     MsgFlushMemtable = 13;
     MsgRefreshBuckets = 14;
+    MsgAppliedToLast = 15;
 }
 
 message FlushMemtable {
@@ -275,11 +276,13 @@ message CheckGcPeer {
     metapb.Peer check_peer = 4;
 }
 
+
 message ExtraMessage {
     ExtraMessageType type = 1;
     // It's merge related index. In `WantRollbackMerge`, it's prepare merge index. In
     // `MsgGcPeerRequest`, it's the commit merge index. In `MsgVoterReplicatedIndexRequest`
     // it's the voter_replicated_index.
+    // In `AppliedToLast`, it is the index the follower applied to.
     uint64 index = 2;
     // In `MsgCheckStalePeerResponse`, it's the peers that receiver can continue to query.
     repeated metapb.Peer check_peers = 3;

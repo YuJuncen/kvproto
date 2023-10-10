@@ -253,6 +253,12 @@ message UpdateGcPeerRequest {
     repeated uint64 peer_id = 1;
 }
 
+message SusbcribeAppliedToLastReqeust {}
+
+message SusbcribeAppliedToLastResponse {
+    uint64 last_index = 1;
+}
+
 enum AdminCmdType {
     InvalidAdmin = 0;
     ChangePeer = 1;
@@ -272,6 +278,9 @@ enum AdminCmdType {
     BatchSwitchWitness = 14;
     // Command that updates RegionLocalState.gc_peers
     UpdateGcPeer = 15;
+    // Subscribe the event of applying to last.
+    // The notification will be reported via an extra message.
+    SusbcribeAppliedToLast = 16;
 }
 
 message AdminRequest {
