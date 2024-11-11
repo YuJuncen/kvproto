@@ -1938,8 +1938,55 @@
             ]
           },
           {
+            "name": "AddSSTFilesRef",
+            "fields": [
+              {
+                "id": 1,
+                "name": "path",
+                "type": "string"
+              }
+            ]
+          },
+          {
+            "name": "AddSSTFiles",
+            "fields": [
+              {
+                "id": 1,
+                "name": "add_sst_file",
+                "type": "AddSSTFile",
+                "is_repeated": true
+              },
+              {
+                "id": 2,
+                "name": "forzen",
+                "type": "bool"
+              }
+            ]
+          },
+          {
+            "name": "AddSSTFile",
+            "fields": [
+              {
+                "id": 1,
+                "name": "as_if_ts",
+                "type": "uint64"
+              },
+              {
+                "id": 2,
+                "name": "file",
+                "type": "File"
+              }
+            ]
+          },
+          {
             "name": "Migration",
             "fields": [
+              {
+                "id": 5,
+                "name": "creator",
+                "type": "string",
+                "is_repeated": true
+              },
               {
                 "id": 1,
                 "name": "edit_meta",
@@ -1961,6 +2008,12 @@
                 "id": 4,
                 "name": "destruct_prefix",
                 "type": "string",
+                "is_repeated": true
+              },
+              {
+                "id": 6,
+                "name": "add_sst_files",
+                "type": "AddSSTFilesRef",
                 "is_repeated": true
               }
             ]

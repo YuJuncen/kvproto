@@ -873,11 +873,31 @@ message DeleteSpansOfFile {
     uint64 whole_file_length = 3;
 }
 
+
+message AddSSTFilesRef {
+    string path = 1;
+}
+
+message AddSSTFiles {
+    repeated AddSSTFile add_sst_file = 1;
+    bool forzen = 2;
+}
+
+message AddSSTFile {
+    uint64 as_if_ts = 1;
+    File file = 2;
+}
+
 message Migration {
+    // The metadata of the creator of the migration.
+    repeated string creator = 5;
+
     repeated MetaEdit edit_meta = 1;
     uint64 truncated_to = 2;
     repeated LogFileCompaction compactions = 3;
     // Delete all files matches this prefix.
     repeated string destruct_prefix = 4;
+    // 
+    repeated AddSSTFilesRef add_sst_files = 6;
 }
 
