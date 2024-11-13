@@ -244,6 +244,18 @@
                 "integer": 1
               }
             ]
+          },
+          {
+            "name": "MigrationVersion",
+            "enum_fields": [
+              {
+                "name": "Base"
+              },
+              {
+                "name": "AllowNewSSTs",
+                "integer": 1
+              }
+            ]
           }
         ],
         "messages": [
@@ -1986,6 +1998,11 @@
                 "name": "creator",
                 "type": "string",
                 "is_repeated": true
+              },
+              {
+                "id": 7,
+                "name": "version",
+                "type": "MigrationVersion"
               },
               {
                 "id": 1,

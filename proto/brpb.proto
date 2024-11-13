@@ -888,9 +888,15 @@ message AddSSTFile {
     File file = 2;
 }
 
+enum MigrationVersion {
+    Base = 0;
+    AllowNewSSTs = 1;
+}
+
 message Migration {
     // The metadata of the creator of the migration.
     repeated string creator = 5;
+    MigrationVersion version = 7;
 
     repeated MetaEdit edit_meta = 1;
     uint64 truncated_to = 2;
