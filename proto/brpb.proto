@@ -48,6 +48,12 @@ enum PrepareSnapshotBackupEventType {
   UpdateLeaseResult = 1;
 }
 
+message FeatureGateRequest {}
+
+message FeatureGateResponse {
+  bool supports_backup_custom_path = 1;
+}
+
 message PrepareSnapshotBackupResponse {
   // The type of the event.
   PrepareSnapshotBackupEventType ty = 1;
@@ -399,6 +405,10 @@ message BackupRequest {
   // this unique id is help to find the state effictively.
   string unique_id = 19;
   kvrpcpb.Context context = 20;
+
+  // when set, the backup file will be put to:
+  // <file_prefix><region-id>_<region-epoch-version>_<start-key-sha256hex>_<unix-millis>_<cf>.sst
+  string file_prefix = 22;
 }
 
 message StreamBackupTaskInfo {
@@ -646,6 +656,8 @@ service Backup {
   // cleanup used for file-copy backup. after we finish the backup for a TiKV.
   // we need clean some internel state. e.g. checkpoint, SST File maps
   rpc cleanup(CleanupRequest) returns (CleanupResponse) {}
+
+  rpc feature_gate(FeatureGateRequest) returns (FeatureGateResponse) {}
 }
 
 // ExternalStorage is a service for using a cloud backend from StorageBackend to store files.

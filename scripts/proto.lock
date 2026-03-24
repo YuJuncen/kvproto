@@ -297,6 +297,19 @@
             ]
           },
           {
+            "name": "FeatureGateRequest"
+          },
+          {
+            "name": "FeatureGateResponse",
+            "fields": [
+              {
+                "id": 1,
+                "name": "supports_backup_custom_path",
+                "type": "bool"
+              }
+            ]
+          },
+          {
             "name": "PrepareSnapshotBackupResponse",
             "fields": [
               {
@@ -1046,6 +1059,11 @@
                 "id": 20,
                 "name": "context",
                 "type": "kvrpcpb.Context"
+              },
+              {
+                "id": 22,
+                "name": "file_prefix",
+                "type": "string"
               }
             ],
             "reserved_ids": [
@@ -2207,6 +2225,11 @@
                 "name": "cleanup",
                 "in_type": "CleanupRequest",
                 "out_type": "CleanupResponse"
+              },
+              {
+                "name": "feature_gate",
+                "in_type": "FeatureGateRequest",
+                "out_type": "FeatureGateResponse"
               }
             ]
           },
